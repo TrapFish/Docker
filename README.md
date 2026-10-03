@@ -351,6 +351,30 @@ Containers often need to communicate with other containers. Docker networks prov
 docker network ls
 docker network inspect <network>
 
+Here, 
+   the first command reprsnt all the network available in the docker
+   and the second command use to run and see the attached container rinning in the particular network
+
+To create a network we use 
+   -- docker network create <network-name>
+
+   **First we  create a Network and then we create a container inside it**
+
+  **Command to run the container in the network**
+
+   docker run -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=pass123 --network mongo-network --name mongodb mongo:<tag_name>
+
+
+docker run -d -p 8081:8081 -e ME_CONFIG_BASICAUTH_USERNAME=gourav -e ME_CONFIG_BASICAUTH_PASSWORD=gouravpass -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=pass123 -e ME_CONFIG_MONGODB_SERVER=mongodb --network mongo-network --name mongoexpress mongo-express
+
+
+   Here,
+
+     -e --> It is a flag to specify the environment
+     --network --> specific network name
+     --name--> container name  
+     <tag_name> -->tag name 
+
 With Docker Compose, services on the same Compose network can normally reach each other by service name.
 
 services:
