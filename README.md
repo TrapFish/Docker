@@ -298,6 +298,20 @@ docker volume ls
 
 List volumes
 
+
+docker ps -- docker ps shows the currently running Docker containers.
+docker ps -a -- it shows all the docker including running and stopped
+
+docker run -d nginx:latest --- run the container in detach mode and doest block the terminal 
+
+docker run ---- always start the new container and to avoid it we use 'start' command 
+
+docker start <container_id>
+
+to stop a container we write : docker stop <docker_id>
+
+
+
 9. Ports and Port Mapping
 
 Containers can listen on ports internally. To access a service from the host, publish a port.
