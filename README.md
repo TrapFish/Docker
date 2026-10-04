@@ -375,6 +375,54 @@ docker run -d -p 8081:8081 -e ME_CONFIG_BASICAUTH_USERNAME=gourav -e ME_CONFIG_B
      --name--> container name  
      <tag_name> -->tag name 
 
+
+Docker Compose: Docker Compose is a tool used to define and run multiple Docker containers as one application 
+
+For example, your application might have:
+React frontend
+      ↓
+Node.js backend
+      ↓
+MongoDB
+
+** Without Compose, you would have to run each container separately with long docker run commands.**
+
+With Compose, you create one file:
+   services:
+  frontend:
+    image: my-react-app
+
+  backend:
+    image: my-node-app
+
+  mongo:
+    image: mongo
+
+Then simply run: "docker compose up"
+
+Docker Compose will:
+
+Create the containers
+Create a Docker network
+Connect the containers to that network
+Start the containers
+Manage their configuration
+Can also manage volumes and environment variables
+
+Docker Compose lets you describe your entire multi-container application in a YAML file and start/manage it with simple commands.
+
+
+Docker Network VS Docker Compose 
+
+|              | Docker Network                                 | Docker Compose                                                          |
+| ------------ | ---------------------------------------------- | ----------------------------------------------------------------------- |
+| What is it?  | A **communication network** between containers | A **tool to define and run multiple containers**                        |
+| Main purpose | Allows containers to talk to each other        | Manages an entire multi-container application                           |
+| Handles      | Networking                                     | Containers + networks + volumes + environment variables + configuration |
+| Example      | `frontend` can communicate with `backend`      | Start frontend + backend + MongoDB together                             |
+| Command      | `docker network create my-network`             | `docker compose up`                                                     |
+
+
 With Docker Compose, services on the same Compose network can normally reach each other by service name.
 
 services:
@@ -382,6 +430,12 @@ services:
     ...
   mongodb:
     ...
+
+
+**generally we need to install docker compose manually ,but when docker desktop is there then we dont have to install the docker compose manually**
+
+docker compose version
+
 
 # Backend can typically use:
 mongodb://mongodb:27017
